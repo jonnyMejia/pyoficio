@@ -5,10 +5,10 @@ from django.urls import path
 
 # Localfolder Library
 from django.urls import path
-from ..views.home import oficio_home
+from ..views.dashboard import oficio_dashboard
 
 app_name = 'base'
 
 urlpatterns = [
-    path('', oficio_home, name='home'),
+    path('', oficio_dashboard, name='dashboard'),
 ]

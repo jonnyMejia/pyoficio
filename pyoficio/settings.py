@@ -38,9 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     # Apps de terceros
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     
     # Local Apps
     'apps.base',
@@ -90,11 +97,33 @@ DATABASES = {
 """ Esta configuración define el modelo personalizado para auth.user. Tambien
 establece las rutas para algunas funciones.
 """
-""" AUTH_USER_MODEL = 'base.PyUser'
-LOGIN_URL = 'PyUser:login'
-LOGIN_REDIRECT_URL = 'base:home'
-LOGOUT_REDIRECT_URL = 'PyUser:login'
- """
+AUTH_USER_MODEL = 'base.PyUser'
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day in seconds
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+
+""" Esta configuración define el servidor de correo personalizado para confirmacion de usuarios
+"""
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'directormvd89@gmail.com'
+EMAIL_HOST_PASSWORD = 'dikime10JUNIO'
+DEFAULT_FROM_EMAIL = 'directormvd89@gmail.com'
+DEFAULT_TO_EMAIL = EMAIL_HOST_USER
+# Define el dominio de la aplicacion, site_id = "example.com"
+SITE_ID = 1
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -120,7 +149,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-pe'
 
-TIME_ZONE = 'America'
+TIME_ZONE = 'America/Lima'
 
 USE_I18N = True
 
@@ -138,11 +167,6 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 
-REST_FRAMEWORK = {
-   'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework.authentication.TokenAuthentication',
-   ),
-   'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated'
-   ),
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'apps.base.serializers.UserSerializer',
 }

@@ -25,10 +25,10 @@ docker-compose up -d --build
 
 ![Alt text](https://github.com/falconsoft3d/pyerp/blob/master/marketing/pyerp-m.png?raw=true "Ynext")
  -->
-# Install PyERP using the following command
+# Install PyOficio using the following command
 ```
 git clone https://github.com/jonnyMejia/pyoficio
-virtualenv env --python=python3
+virtualenv env 
 source env/bin/activate
 cd pyoficio
 pip install -r requirements.txt

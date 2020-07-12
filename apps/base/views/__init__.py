@@ -9,9 +9,15 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import clear_url_caches, reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 # Thirdparty Library
 from pyoficio.settings import BASE_DIR
+
+# Localfolder Library
+
+from .dashboard import oficio_dashboard
+from .home import Oficio_home
+from .usercustom import pylogin
 

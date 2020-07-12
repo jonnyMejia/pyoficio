@@ -1,12 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Vista del home
-"""
-
 # Django Library
-from django.views.generic import RedirectView, TemplateView
+from django.contrib.auth.decorators import login_required
+from . import TemplateView
 
-class oficio_home(TemplateView):
-    template_name='home.html'
+# Localfolder Library 
 
-
+class Oficio_home(TemplateView):
+    template_name = "home.html"
+    

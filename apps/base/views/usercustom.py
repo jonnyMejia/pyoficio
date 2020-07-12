@@ -19,7 +19,18 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView, TemplateView
 
+# Localfolder Library
+from ..models import PyUser
+
 class pylogin(TemplateView):
     template_name='usercustom/login.html'
 
-
+##############################################################################
+class SignUpView(TemplateView):
+    """Esta clase sirve registrar a los usuarios en el sistema
+    """
+    model = PyUser
+    template_name = 'usercustom/signup.html'
+    extra_context = {}
+    success_url = 'PyUser:login'
+    success_message = _('Your account was created successfully. A link was sent to your email that you must sign in to confirm your sign up.')
