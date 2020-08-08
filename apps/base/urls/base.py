@@ -4,7 +4,7 @@
 from django.urls import path
 
 # Localfolder Library
-from django.urls import path
+
 from ..views.dashboard import oficio_dashboard
 
 app_name = 'base'

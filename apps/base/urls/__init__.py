@@ -14,6 +14,6 @@ from allauth.account.views import confirm_email
 
 urlpatterns = [
     # ============================ New URLs ============================ #
-    path('', include('apps.base.urls.usercustom')),
+    path('', include('apps.base.urls.home')),
     path('base/', include('apps.base.urls.base')),
 ]

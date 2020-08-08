@@ -6,7 +6,7 @@ from . import TemplateView
 
 # Localfolder Library 
 
-
+@login_required()
 def oficio_dashboard(request):
     """Vista para renderizar el dasboard del oficio
     """
