@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 # Standard library
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from pathlib import Path
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -25,7 +26,7 @@ SECRET_KEY = '^mf*2)^u^gtruf7f@x&+#t1yt_c6(k%75rbe3#ark7_nj=kghk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["ingenieria.pythonanywhere.com"]
 
 
 # Application definition
