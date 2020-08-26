@@ -1,0 +1,55 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block slider %}    
+<div style="height: 113px;"></div>
+
+<div class="unit-5 overlay" style="background-image: url('/static/home/images/hero_1.jpg');">
+  <div class="container text-center">
+    <h2 class="mb-0">{{object.nombre}}</h2>
+    <p class="mb-0 unit-6"><a href="{% url 'oficio_list' %}">Oficios</a> <span class="sep">></span> <span>{{object.nombre}}</span></p>
+  </div>
+</div>
+{% endblock slider %}
+    
+
+{% block body %}
+
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row">
+      {% for user in object.usuario.all %}
+      <div class="col-md-6 mb-5 mb-lg-4 col-lg-3 aos-init aos-animate" data-aos="fade">
+        <div class="position-relative unit-8">
+          <a href="#" class="mb-3 d-block img-a"><img src="{{user.avatar.url}}" alt="Image" class="img-fluid rounded"></a>
+        <h4 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="#" class="text-black">{{user.first_name}} {{user.last_name}}</a></h5>
+        <h8 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="#" class="text-black">{{user.distrito.nombre}}</a></h8>
+        <p>{{user.celular}}</p>
+      </div>
+      </div>
+      {% endfor %}
+      
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-12 text-center">
+        <div class="site-block-27">
+          <ul>
+            <li><a href="#"><i class="icon-keyboard_arrow_left h5"></i></a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#"><i class="icon-keyboard_arrow_right h5"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+ 
+{% endblock body %}
+

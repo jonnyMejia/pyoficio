@@ -15,6 +15,9 @@ from django.utils.translation import ugettext_lazy as _
 # Localfolder Library
 from ..models import PyUser
 
+from .producto import ProductoForm
+from .usercustom import ProfileForm
+
 class PersonaChangeForm(UserChangeForm):
     """Para algo sera esto
     """

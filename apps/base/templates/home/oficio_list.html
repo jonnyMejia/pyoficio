@@ -1,0 +1,48 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block slider %}
+  
+
+<div style="height: 113px;"></div>
+
+<div class="unit-5 overlay" style="background-image: url('/static/home/images/hero_1.jpg');">
+  <div class="container text-center">
+    <h2 class="mb-0">Oficios</h2>
+    <p class="mb-0 unit-6"><a href="{% url 'home' %}">Home</a> <span class="sep"></span> <span>Oficios</span></p>
+  </div>
+</div>
+
+{% endblock slider %}
+
+    {% block body %}
+    
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+            <h2 class="mb-5">Oficios Populares</h2>
+          </div>
+        </div>
+        
+        <div class="row">
+          {% for oficio in oficios %}
+          {% if oficio.nombre %}
+          
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
+            <a href="{% url 'oficio_detail' oficio.pk %}" class="h-100 feature-item">
+              <span class="d-block icon flaticon-restaurant mb-3 text-primary"></span>
+              <h2>{{oficio.nombre}}</h2>
+              <span class="counting">{{oficio.cantidad}}</span>
+            </a>
+          </div>
+          {% endif %}
+          {% empty %}
+          <li>No hay oficios </li>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+    {% endblock body %}
+    

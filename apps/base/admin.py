@@ -10,7 +10,7 @@ from django.contrib.auth.models import Permission
 # Localfolder Library
 from .forms import PersonaChangeForm, PersonaCreationForm
 from .models import (
-    PyUser)
+    PyUser, PyProduct, PyDistrito, PyOficio)
 
 class PersonaAdmin(UserAdmin):
     """ Admin para usuarios
@@ -25,10 +25,13 @@ class PersonaAdmin(UserAdmin):
     # Definir fieldsets ya que "username" se establece por defecto y no debe ir
     fieldsets =  (
         (None, {'fields': ('email','password',)}),
-        ('Informacion Personal', {'fields': ('first_name','last_name','celular','avatar')}),
+        ('Informacion Personal', {'fields': ('first_name','last_name','distrito','celular','avatar')}),
         ('Permisos', {'fields': ('is_active','is_staff','is_superuser','user_permissions',)}),
     )
     
 
 admin.site.register(PyUser, PersonaAdmin)
+admin.site.register(PyOficio)
+admin.site.register(PyProduct)
+admin.site.register(PyDistrito)
 admin.site.register(LogEntry)

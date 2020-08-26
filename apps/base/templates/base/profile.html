@@ -1,0 +1,11 @@
+{% extends 'base/dashboard.html' %}
+
+{% block content %}
+<h3>Profile  > {{user}}</h3>
+<form action="{% url 'base:profile' user.id %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit">Actualizar</button>
+</form>
+{% endblock content %}
+

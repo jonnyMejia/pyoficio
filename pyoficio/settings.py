@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 # Standard library
 import os
 
-# Django library
-from django.urls import reverse_lazy
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -56,6 +53,9 @@ INSTALLED_APPS = [
     'apps.base',
 ]
 
+# Define el dominio de la aplicacion, site_id = "example.com"
+SITE_ID = 1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,16 +86,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pyoficio.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -104,6 +97,10 @@ DATABASES = {
         'PASSWORD': 'fisi2019',
         'HOST': 'localhost',
         'PORT': '5432',
+    },
+    'sqllite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -111,21 +108,17 @@ DATABASES = {
 establece las rutas para algunas funciones.
 """
 AUTH_USER_MODEL = 'base.PyUser'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = "/base/"
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = reverse_lazy('account_confirm_complete')
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = reverse_lazy('account_confirm_complete')
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day in seconds
-SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "pyoficio.org"
 
 """ Esta configuración define el servidor de correo personalizado para confirmacion de usuarios
 """
@@ -137,8 +130,7 @@ EMAIL_HOST_USER = 'directormvd89@gmail.com'
 EMAIL_HOST_PASSWORD = 'dikime10JUNIO'
 DEFAULT_FROM_EMAIL = 'directormvd89@gmail.com'
 DEFAULT_TO_EMAIL = EMAIL_HOST_USER
-# Define el dominio de la aplicacion, site_id = "example.com"
-SITE_ID = 1
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

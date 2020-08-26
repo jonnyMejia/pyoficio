@@ -1,0 +1,11 @@
+{% extends 'base/dashboard.html' %}
+
+{% block content %}
+<h3> Productos </h3>
+<form action="" enctype="multipart/form-data" method="POST" >
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit">Actualizar</button>
+</form>
+{% endblock content %}
+

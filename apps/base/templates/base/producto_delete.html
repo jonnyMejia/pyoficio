@@ -1,0 +1,18 @@
+{% extends 'base/dashboard.html' %}
+<!--<div class="modal fade show" id="modal-danger" style="display: block; padding-right: 12px;" aria-modal="true">-->
+    
+    {% block content %}
+        
+    <h3> Eliminar Producto </h3>
+    
+    <form method="get" role="form" action="{% url 'base:dashboard' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary ">{{ _('Cancelar') }}</button>
+    </form>
+    <form method="post" role="form" action="{% url 'base:delete' object.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">{{ _('Delete') }}</button>
+    </form>
+    
+    {% endblock content %}
+    

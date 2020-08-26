@@ -8,17 +8,10 @@ from django.contrib import admin
 from rest_auth.registration.views import VerifyEmailView, RegisterView
 
 # Localfolder Library
-from ..views import Oficio_home
 
 urlpatterns = [
-    
+    re_path(r'^account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(), name='account_confirm_email'),
+    re_path(r'^account-confirm-email/$', VerifyEmailView.as_view(), name='account_email_verification_sent'),
     url('', include('allauth.urls')),
-    #path('', include('rest_auth.urls')),
-    # path('register/', include('rest_auth.registration.urls')),
-    # url(r'^account-confirm-email/(?P<key>.+)/$', VerifyEmailView.as_view(), name='account_confirm_email'),
-    re_path(r'^account-confirm-email/', VerifyEmailView.as_view(),
-     name='account_email_verification_sent'),
-    re_path(r'^account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(),
-     name='account_confirm_email'),
 ]
 

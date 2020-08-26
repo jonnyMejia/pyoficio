@@ -8,8 +8,6 @@ from django.core.files.storage import FileSystemStorage
 
 # import subprocess
 
-
-
 class RenameImage(FileSystemStorage):
     """Returns a filename that's free on the target storage system, and
     available for new content to be written to.
