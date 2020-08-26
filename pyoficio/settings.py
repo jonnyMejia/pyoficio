@@ -89,16 +89,9 @@ WSGI_APPLICATION = 'pyoficio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pyoficio',
-        'USER': 'postgres',
-        'PASSWORD': 'fisi2019',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    },
-    'sqllite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
