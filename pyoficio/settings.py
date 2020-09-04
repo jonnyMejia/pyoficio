@@ -25,7 +25,7 @@ SECRET_KEY = '^mf*2)^u^gtruf7f@x&+#t1yt_c6(k%75rbe3#ark7_nj=kghk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ingenieria.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -116,13 +116,7 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = "pyoficio.org"
 """ Esta configuración define el servidor de correo personalizado para confirmacion de usuarios
 """
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'directormvd89@gmail.com'
-EMAIL_HOST_PASSWORD = 'dikime10JUNIO'
-DEFAULT_FROM_EMAIL = 'directormvd89@gmail.com'
-DEFAULT_TO_EMAIL = EMAIL_HOST_USER
+
 
 
 # Password validation
